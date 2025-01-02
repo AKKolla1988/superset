@@ -16,50 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { extendedDayjs } from 'src/utils/dates';
-import Timer, { TimerProps } from './index';
 
-export default {
-  title: 'Timer',
-  component: Timer,
-};
+import { Empty as AntdEmpty } from 'antd-v5';
+import { EmptyProps } from 'antd-v5/es/empty';
 
-export const InteractiveTimer = (args: TimerProps) => <Timer {...args} />;
-
-InteractiveTimer.args = {
-  isRunning: false,
-};
-
-InteractiveTimer.argTypes = {
-  startTime: {
-    defaultValue: extendedDayjs().utc().valueOf(),
-    table: {
-      disable: true,
-    },
+export const Empty = Object.assign(
+  (props: EmptyProps) => <AntdEmpty {...props} />,
+  {
+    PRESENTED_IMAGE_SIMPLE: AntdEmpty.PRESENTED_IMAGE_SIMPLE,
+    PRESENTED_IMAGE_DEFAULT: AntdEmpty.PRESENTED_IMAGE_DEFAULT,
   },
-  endTime: {
-    table: {
-      disable: true,
-    },
-  },
-  status: {
-    control: {
-      type: 'select',
-    },
-    options: [
-      'success',
-      'warning',
-      'danger',
-      'info',
-      'default',
-      'primary',
-      'secondary',
-    ],
-  },
-};
-
-InteractiveTimer.parameters = {
-  actions: {
-    disabled: true,
-  },
-};
+);

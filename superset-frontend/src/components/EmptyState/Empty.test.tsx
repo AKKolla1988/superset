@@ -16,50 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { extendedDayjs } from 'src/utils/dates';
-import Timer, { TimerProps } from './index';
 
-export default {
-  title: 'Timer',
-  component: Timer,
-};
+import { render } from 'spec/helpers/testing-library';
+import { Empty } from './Empty';
 
-export const InteractiveTimer = (args: TimerProps) => <Timer {...args} />;
-
-InteractiveTimer.args = {
-  isRunning: false,
-};
-
-InteractiveTimer.argTypes = {
-  startTime: {
-    defaultValue: extendedDayjs().utc().valueOf(),
-    table: {
-      disable: true,
-    },
-  },
-  endTime: {
-    table: {
-      disable: true,
-    },
-  },
-  status: {
-    control: {
-      type: 'select',
-    },
-    options: [
-      'success',
-      'warning',
-      'danger',
-      'info',
-      'default',
-      'primary',
-      'secondary',
-    ],
-  },
-};
-
-InteractiveTimer.parameters = {
-  actions: {
-    disabled: true,
-  },
-};
+test('should render', () => {
+  const { container } = render(<Empty />);
+  expect(container).toBeInTheDocument();
+});

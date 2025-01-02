@@ -16,50 +16,37 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { extendedDayjs } from 'src/utils/dates';
-import Timer, { TimerProps } from './index';
+import { Divider, DividerProps } from 'src/components/Divider';
 
 export default {
-  title: 'Timer',
-  component: Timer,
+  title: 'Divider',
+  component: Divider,
 };
 
-export const InteractiveTimer = (args: TimerProps) => <Timer {...args} />;
+export const InteractiveDivider = (args: DividerProps) => <Divider {...args} />;
 
-InteractiveTimer.args = {
-  isRunning: false,
+InteractiveDivider.args = {
+  dashed: false,
+  variant: 'solid',
+  orientation: 'center',
+  plain: true,
+  type: 'horizontal',
 };
 
-InteractiveTimer.argTypes = {
-  startTime: {
-    defaultValue: extendedDayjs().utc().valueOf(),
-    table: {
-      disable: true,
-    },
+InteractiveDivider.argTypes = {
+  variant: {
+    control: { type: 'select' },
+    options: ['dashed', 'dotted', 'solid'],
   },
-  endTime: {
-    table: {
-      disable: true,
-    },
+  orientation: {
+    control: { type: 'select' },
+    options: ['left', 'right', 'center'],
   },
-  status: {
-    control: {
-      type: 'select',
-    },
-    options: [
-      'success',
-      'warning',
-      'danger',
-      'info',
-      'default',
-      'primary',
-      'secondary',
-    ],
+  orientationMargin: {
+    control: { type: 'text' },
   },
-};
-
-InteractiveTimer.parameters = {
-  actions: {
-    disabled: true,
+  type: {
+    control: { type: 'select' },
+    options: ['horizontal', 'vertical'],
   },
 };
