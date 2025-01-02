@@ -91,6 +91,8 @@ if "SUPERSET_HOME" in os.environ:
 else:
     DATA_DIR = os.path.expanduser("~/.superset")
 
+ENABLE_REST_API = True
+PUBLIC_ROLE_LIKE = "Gamma"
 # ---------------------------------------------------------
 # Superset specific config
 # ---------------------------------------------------------
@@ -1932,3 +1934,5 @@ elif importlib.util.find_spec("superset_config") and not is_test():
     except Exception:
         logger.exception("Found but failed to import local superset_config")
         raise
+
+
